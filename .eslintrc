@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "ta",
+    "ta/frontend"
+  ],
+  "globals": {
+    "__DEV__": false,
+    "__DEBUG__": false,
+    "__PROD__": false
+  }
+}
