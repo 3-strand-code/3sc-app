@@ -38,7 +38,7 @@ const DEFAULT_HEADERS = {
 }
 
 const ENDPOINTS = {
-  applications: 'api/applications/',
+  applicants: 'api/applicants/',
   login: 'rest-auth/login/',
   logout: 'TODO',
   users: 'TODO',
@@ -56,13 +56,15 @@ window.ajax = ajax
 ajax.interceptors.request.use(config => {
   if (!storage.getAuthToken()) debug('No authToken found in local storage.')
 
+  console.log("ajax method: " + config.method)
+
   config.headers = {
     ...DEFAULT_HEADERS,
     ...config.headers,
   }
 
-  if (/^(HEAD|OPTIONS|TRACE)$/.test(config.method)) {
-    config.headers.Authorization = `Key ${storage.getAuthToken()}`
+  if (!/^(HEAD|OPTIONS|TRACE)$/i.test(config.method)) {
+    config.headers.Authorization = `Token ${storage.getAuthToken()}`
   }
 
   return config
@@ -91,6 +93,7 @@ const tsc = {
       .catch(error => debug(error))
   },
   logout: () => {
+    // TODO What does clear do here? does it remove everything? I guess that makes sense on logout?
     storage.clear()
     return Promise.resolve()
   },
@@ -99,9 +102,9 @@ const tsc = {
   // namespaces (resources/models)
   //
 
-  applications: {
-    create: () => ajax.post(ENDPOINTS.applications),
-    get: (id) => ajax.get(ENDPOINTS.applications, {paras: {id}})
+  applicants: {
+    create: () => ajax.post(ENDPOINTS.applicants),
+    get: (id) => ajax.get(ENDPOINTS.applicants, {params: {id}})
       .then(res => debug('success', res))
       .catch(res => debug('error', res)),
   },
@@ -111,8 +114,8 @@ const tsc = {
     create: user => ajax.post(ENDPOINTS.users, user),
     get: id => ajax.get(ENDPOINTS.users, {params: {id}}),
     update: (id, user) => ajax.put(ENDPOINTS.users, user),
-    delete: id => ajax.delete(ENDPOINTS.users, id),
-    list: () => ajax.get(ENDPOINTS.users),
+    //delete: id => ajax.delete(ENDPOINTS.users, id),
+    //list: () => ajax.get(ENDPOINTS.users),
   },
 }
 
