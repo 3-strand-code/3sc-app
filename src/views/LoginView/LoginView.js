@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from 'react'
+import React, { Component, PropTypes } from 'react'
 import cx from 'classnames'
-import {Button, Field, Form, Header, Input, Message} from 'stardust'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {login} from 'services/session'
+import { Button, Field, Form, Header, Input, Message } from 'stardust'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { login } from 'services/session'
 import classes from './LoginView.scss'
 import autobind from 'autobind-decorator'
 
@@ -26,7 +26,7 @@ class LoginView extends Component {
     actions: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     session: PropTypes.object.isRequired,
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     const wasAuthenticated = this.props.session.isAuthenticated
@@ -43,12 +43,12 @@ class LoginView extends Component {
     // Problem: loginForm ref is not working...? ref= attribute on form appears right
     // however login prop action points to right function and works!!
     // set state somewhere?
-    const {email, password} = this.refs.loginForm.serializeJson()
+    const { email, password } = this.refs.loginForm.serializeJson()
     this.props.actions.login(email.value, password.value)
   }
 
   renderErrorMessage() {
-    const {error} = this.props.session
+    const { error } = this.props.session
 
     if (error) {
       return (
@@ -70,7 +70,7 @@ class LoginView extends Component {
         <Header.H1 className='center aligned'>
           Welcome to 3 Strand Code
         </Header.H1>
-        <Form onSubmit={this.handleSubmit} ref='loginForm' className={formClass}>
+        <Form onSubmit={this.handleSubmit} className={formClass} ref='loginForm'>
           {this.renderErrorMessage()}
           <Field>
             <Input name='email' placeholder='Username' type='text' />

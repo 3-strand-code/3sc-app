@@ -1,5 +1,5 @@
 import path from 'path'
-import {argv} from 'yargs'
+import { argv } from 'yargs'
 import pkg from '../package.json'
 
 const env = process.env.NODE_ENV || 'development'
@@ -25,7 +25,7 @@ const config = {
   // Server Configuration
   // ----------------------------------
   server_host: 'localhost',
-  server_port: process.env.PORT || 3000,
+  server_port: process.env.PORT || 8080,
 
   // ----------------------------------
   // Compiler Configuration

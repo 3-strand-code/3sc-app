@@ -9,7 +9,7 @@ const compiler = webpack(webpackConfig)
 
 debug('Run webpack compiler.')
 compiler.run((err, stats) => {
-  const {errors, warnings} = stats.toJson()
+  const { errors, warnings } = stats.toJson()
 
   debug('Webpack compile completed.')
   console.log(stats.toString(config.compiler_stats))

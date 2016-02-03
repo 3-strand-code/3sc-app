@@ -1,10 +1,10 @@
-import tsc from 'resources/tsc'
+import tsc from '../resources/tsc'
 
 import {
   loginRequest,
   loginSuccess,
   loginFailure,
-} from 'redux/modules/session'
+} from '../redux/modules/session'
 
 export const login = (email, password) => {
   return (dispatch) => {
@@ -12,7 +12,7 @@ export const login = (email, password) => {
 
     tsc.login(email, password)
       .then(
-        ({key, user}) => dispatch(loginSuccess(key, user)),
+        ({ key, user }) => dispatch(loginSuccess(key, user)),
         (error) => dispatch(loginFailure(error)))
   }
 }

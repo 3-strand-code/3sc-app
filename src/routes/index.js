@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Redirect, IndexRoute} from 'react-router'
+import { Route, Redirect, IndexRoute } from 'react-router'
 import requireAuth from './hooks/requireAuth'
 import sendToProtectedRoute from './hooks/sendToProtectedRoute'
 

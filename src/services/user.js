@@ -1,4 +1,4 @@
-import tsc from 'resources/tsc'
+import tsc from '../resources/tsc'
 
 import {
   updateUserRequest,

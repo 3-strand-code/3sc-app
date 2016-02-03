@@ -1,4 +1,4 @@
-import {argv} from 'yargs'
+import { argv } from 'yargs'
 import _debug from 'debug'
 import config from '../config'
 import webpackConfig from './webpack.config'

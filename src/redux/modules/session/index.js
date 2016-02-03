@@ -1,4 +1,4 @@
-import storage from 'modules/utils/storage'
+import tsc from 'resources/tsc'
 
 export const SESSION_LOGIN_REQUEST = 'SESSION_LOGIN_REQUEST'
 export const SESSION_LOGIN_SUCCESS = 'SESSION_LOGIN_SUCCESS'
@@ -37,54 +37,47 @@ const initialState = {
   authToken: null,
   error: null,
   hasPendingLogin: false,
-  isAuthenticated: false,
-  user: null,
+  isAuthenticated: tsc.isAuthenticated(),
+  user: tsc.getCurrentUser(),
 }
+
 export default function sessionReducer(state = initialState, action) {
-  let newState
-  // NOTE: these case statements would normally just return the new state
-  // shape, but because we need to sync to local storage which is easier
-  // to do using the "newState" pattern. See below note for more on this.
   switch (action.type) {
     case SESSION_LOGIN_REQUEST:
-      newState = {
+      return {
         ...state,
         hasPendingLogin: true,
         error: null,
       }
-      break
     case SESSION_LOGIN_SUCCESS:
-      newState = {
+      return {
         ...state,
         hasPendingLogin: false,
         isAuthenticated: true,
         authToken: action.payload.token,
         user: action.payload.user,
       }
-      break
     case SESSION_LOGIN_FAILURE:
-      newState = {
+      return {
         ...state,
         hasPendingLogin: false,
         error: action.error,
       }
-      break
     case SESSION_LOGOUT:
-      newState = {
+      return {
         ...state,
         authToken: null,
         isAuthenticated: false,
         user: null,
       }
-      break
     default:
       return state
   }
+}
 
-  // TODO: this will be handled by a store enhancer or middleware
-  storage.setUser(newState.user)
-  storage.setAuthToken(newState.authToken)
-  storage.setIsAuthenticated(newState.isAuthenticated)
-
-  return newState
+// ------------------------------------
+// Selectors
+// ------------------------------------
+export const currentUser = (state) => {
+  return state.user
 }

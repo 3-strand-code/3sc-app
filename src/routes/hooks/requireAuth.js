@@ -1,8 +1,7 @@
-const requireAuth = (location, replaceWith) => {
-  console.log('YOU HAVE NO AUTH SETUP YET :)') // eslint-disable-line
-  const isAuthenticated = true
+import tsc from 'resources/tsc'
 
-  if (!isAuthenticated) {
+const requireAuth = (location, replaceWith) => {
+  if (!tsc.isAuthenticated()) {
     replaceWith(null, '/login')
   }
 }

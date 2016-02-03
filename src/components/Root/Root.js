@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react'
-import {Provider} from 'react-redux'
-import {Router} from 'react-router'
+import React, { Component, PropTypes } from 'react'
+import { Provider } from 'react-redux'
+import { Router } from 'react-router'
 
 class Root extends Component {
   static propTypes = {

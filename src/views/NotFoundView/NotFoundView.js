@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, { Component, PropTypes } from 'react'
 
 class NotFoundView extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ class NotFoundView extends Component {
 
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{ textAlign: 'center' }}>
         <h1>Page Not Found</h1>
         <button onClick={this.onReturnToHomepage}>
           Return to the Homepage

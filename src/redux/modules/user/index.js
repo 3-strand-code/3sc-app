@@ -1,5 +1,5 @@
-import storage from 'modules/utils/storage'
-import {SESSION_LOGIN_SUCCESS} from './session'
+import storage from '../../../modules/utils/storage'
+import { SESSION_LOGIN_SUCCESS } from './../session'
 
 export const USER_FETCH_REQUEST = 'USER_FETCH_REQUEST'
 export const USER_FETCH_SUCCESS = 'USER_FETCH_SUCCESS'

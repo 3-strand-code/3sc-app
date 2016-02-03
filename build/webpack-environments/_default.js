@@ -25,8 +25,6 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.DefinePlugin(config.compiler_globals),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       hash: false,
@@ -52,7 +50,7 @@ const webpackConfig = {
       exclude: /node_modules/,
     }] : [],
     loaders: [
-      {test: /\.json/, loader: 'json'},
+      { test: /\.json/, loader: 'json' },
       {
         test: /\.js$/,
         exclude: /node_modules\/(?!(stardust))/,
