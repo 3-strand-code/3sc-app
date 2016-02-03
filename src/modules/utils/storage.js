@@ -24,6 +24,7 @@ const storage = {
   setAuthToken: (token) => localSync.set(KEYS.authToken, token),
   getAuthToken: () => localSync.get(KEYS.authToken),
 
+  // TODO: why do we need a new key for this? this could just look if user//auth_token is defined??
   setIsAuthenticated: (isAuthenticated) => localSync.set(KEYS.isAuthenticated, isAuthenticated),
   getIsAuthenticated: () => localSync.get(KEYS.isAuthenticated),
 

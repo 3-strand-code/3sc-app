@@ -9,3 +9,14 @@
 1. `npm run dev` and go to http://localhost:3000/login
 
 `npm run` for more help
+
+
+## Trouble installing?
+
+Try running `npm i` again.
+
+Do you get an error `webpack-sources missing`? Then:
+
+```
+npm install webpack-sources
+```
