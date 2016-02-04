@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from 'components/Header/Header'
-import classes from './PageLayout.scss'
+import classes from './AppLayout.scss'
 
-class PageLayout extends React.Component {
+class AppLayout extends React.Component {
   static propTypes = {
     children: React.PropTypes.element,
-  }
+  };
 
   render() {
     return (
@@ -19,4 +19,4 @@ class PageLayout extends React.Component {
   }
 }
 
-export default PageLayout
+export default AppLayout

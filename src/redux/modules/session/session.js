@@ -1,9 +1,7 @@
-import tsc from 'resources/tsc'
-
 export const SESSION_LOGIN_REQUEST = 'SESSION_LOGIN_REQUEST'
 export const SESSION_LOGIN_SUCCESS = 'SESSION_LOGIN_SUCCESS'
 export const SESSION_LOGIN_FAILURE = 'SESSION_LOGIN_FAILURE'
-export const SESSION_LOGOUT = 'SESSION_LOGOUT'
+export const SESSION_LOGOUT_SUCCESS = 'SESSION_LOGOUT_SUCCESS'
 
 // ------------------------------------
 // Action Creators
@@ -25,45 +23,48 @@ export const loginFailure = (error) => ({
   error,
 })
 
-export const logout = () => ({
-  type: SESSION_LOGOUT,
+export const logoutSuccess = () => ({
+  type: SESSION_LOGOUT_SUCCESS,
 })
 
 // ------------------------------------
 // Reducer Definition
 // ------------------------------------
-// TODO: this should be rehydrated on initialization
 const initialState = {
   authToken: null,
   error: null,
   hasPendingLogin: false,
-  isAuthenticated: tsc.isAuthenticated(),
-  user: tsc.getCurrentUser(),
+  isAuthenticated: false,
+  user: null,
 }
 
-export default function sessionReducer(state = initialState, action) {
-  switch (action.type) {
+export default function sessionReducer(state = initialState, action = {}) {
+  const { error, payload, type } = action
+
+  switch (type) {
     case SESSION_LOGIN_REQUEST:
+      console.log('SESSION_LOGIN_REQUEST')
       return {
         ...state,
         hasPendingLogin: true,
         error: null,
       }
     case SESSION_LOGIN_SUCCESS:
+      console.log('SESSION_LOGIN_SUCCESS')
       return {
         ...state,
         hasPendingLogin: false,
         isAuthenticated: true,
-        authToken: action.payload.token,
-        user: action.payload.user,
+        authToken: payload.token,
+        user: payload.user,
       }
     case SESSION_LOGIN_FAILURE:
       return {
         ...state,
         hasPendingLogin: false,
-        error: action.error,
+        error,
       }
-    case SESSION_LOGOUT:
+    case SESSION_LOGOUT_SUCCESS:
       return {
         ...state,
         authToken: null,
@@ -73,11 +74,4 @@ export default function sessionReducer(state = initialState, action) {
     default:
       return state
   }
-}
-
-// ------------------------------------
-// Selectors
-// ------------------------------------
-export const currentUser = (state) => {
-  return state.user
 }

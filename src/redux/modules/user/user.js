@@ -1,5 +1,4 @@
-import storage from '../../../modules/utils/storage'
-import { SESSION_LOGIN_SUCCESS } from './../session'
+import { SESSION_LOGIN_SUCCESS } from './../session/session'
 
 export const USER_FETCH_REQUEST = 'USER_FETCH_REQUEST'
 export const USER_FETCH_SUCCESS = 'USER_FETCH_SUCCESS'
@@ -54,70 +53,56 @@ const initialState = {
   error: null,
   isFetching: false,
   isUpdating: false,
-  node: storage.getUser() || null,
+  node: null,
 }
 
 /* eslint complexity:0 */
-export default function userReducer(state = initialState, action) {
-  let newState
-  switch (action.type) {
+export default function userReducer(state = initialState, action = {}) {
+  const { error, payload, response, type } = action
+
+  switch (type) {
     case USER_FETCH_REQUEST:
-      newState = {
+      return {
         ...state,
         isFetching: true,
         error: null,
       }
-      break
     case USER_FETCH_SUCCESS:
-      storage.setUser(action.response)
-      newState = {
+      return {
         ...state,
         isFetching: false,
-        node: action.response,
+        node: response,
       }
-      break
     case USER_FETCH_FAILURE:
-      newState = {
+      return {
         ...state,
         isFetching: false,
-        error: action.error,
+        error,
       }
-      break
     case USER_UPDATE_REQUEST:
-      newState = {
+      return {
         ...state,
         isUpdating: true,
         error: null,
       }
-      break
     case USER_UPDATE_SUCCESS:
-      storage.setUser(action.response)
-      newState = {
+      return {
         ...state,
         isUpdating: false,
-        node: action.response,
+        node: response,
       }
-      break
     case USER_UPDATE_FAILURE:
-      newState = {
+      return {
         ...state,
         isUpdating: false,
-        error: action.error,
+        error,
       }
-      break
     case SESSION_LOGIN_SUCCESS:
-      newState = {
+      return {
         ...state,
-        node: action.payload.user,
+        node: payload.user,
       }
-      break
     default:
       return state
   }
-
-  storage.setUser(newState.node)
-
-  return newState
 }
-
-

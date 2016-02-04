@@ -7,7 +7,7 @@ import {
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure,
-} from 'redux/modules/user'
+} from 'redux/modules/user/user'
 
 export const update = (id, userData) => {
   return (dispatch) => {

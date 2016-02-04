@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-
+import { Menu, MenuItem } from 'stardust'
 export default class Header extends Component {
   render() {
     return (
-      <div>
-        I'm a header yo
-      </div>
+      <Menu>
+        <MenuItem>Dashboard</MenuItem>
+        <MenuItem>Assignments</MenuItem>
+        <MenuItem>My Account</MenuItem>
+      </Menu>
     )
   }
 }

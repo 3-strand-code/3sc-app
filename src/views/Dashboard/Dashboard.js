@@ -1,28 +1,42 @@
+import autobind from 'autobind-decorator'
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import * as sessionSelectors from 'redux/modules/session'
+import { bindActionCreators } from 'redux'
+import { Button } from 'stardust'
 
-export default class Dashboard extends Component {
+import * as sessionService from 'services/session'
+
+class Dashboard extends Component {
   static propTypes = {
+    actions: PropTypes.shape({
+      logout: PropTypes.func.isRequired,
+    }),
     currentUser: PropTypes.object,
   };
+
+  @autobind
+  handleLogout() {
+    this.props.actions.logout()
+  }
 
   render() {
     const { currentUser } = this.props
     return (
       <div>
-        I am logged in yoooooo
-        <hr />
         <pre>{JSON.stringify(currentUser, null, 2)}</pre>
+        <Button onClick={this.handleLogout}>Logout</Button>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: sessionSelectors.currentUser(state),
-  }
-}
+const mapStateToProps = (state) => ({
+  currentUser: state.session.user,
+})
 
-connect(mapStateToProps)(Dashboard)
+const mapDispatchToProps = (dispatch, getState) => ({
+  actions: bindActionCreators({
+    ...sessionService,
+  }, dispatch),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

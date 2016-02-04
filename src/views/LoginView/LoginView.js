@@ -1,26 +1,22 @@
-import React, { Component, PropTypes } from 'react'
+import styles from './LoginView.scss'
+import autobind from 'autobind-decorator'
 import cx from 'classnames'
+import React, { Component, PropTypes } from 'react'
 import { Button, Field, Form, Header, Input, Message } from 'stardust'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { login } from 'services/session'
-import classes from './LoginView.scss'
-import autobind from 'autobind-decorator'
 
 const mapStateToProps = (state) => ({
   session: state.session,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  // TODO why in the hell...
-  actions: {
-    ...bindActionCreators({
-      login,
-    }, dispatch),
-  },
+  actions: bindActionCreators({
+    login,
+  }, dispatch),
 })
 
-@connect(mapStateToProps, mapDispatchToProps)
 class LoginView extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -51,11 +47,7 @@ class LoginView extends Component {
     const { error } = this.props.session
 
     if (error) {
-      return (
-        <Message className='error'>
-          {error.message}
-        </Message>
-      )
+      return <Message className='error'>{error.message}</Message>
     }
   }
 
@@ -66,17 +58,17 @@ class LoginView extends Component {
     })
 
     return (
-      <div className={classes.loginColumn}>
+      <div className={styles.loginColumn}>
         <Header.H1 className='center aligned'>
           Welcome to 3 Strand Code
         </Header.H1>
         <Form onSubmit={this.handleSubmit} className={formClass} ref='loginForm'>
           {this.renderErrorMessage()}
           <Field>
-            <Input name='email' placeholder='Username' type='text' />
+            <Input name='email' placeholder='Username' type='text' defaultValue='levi' />
           </Field>
           <Field>
-            <Input name='password' placeholder='Password' type='password' />
+            <Input name='password' placeholder='Password' type='password' defaultValue='levi' />
           </Field>
           <Button type='submit' className='fluid blue'>
             Continue
@@ -87,4 +79,4 @@ class LoginView extends Component {
   }
 }
 
-export default LoginView
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView)

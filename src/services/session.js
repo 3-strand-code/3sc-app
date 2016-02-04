@@ -4,15 +4,30 @@ import {
   loginRequest,
   loginSuccess,
   loginFailure,
-} from '../redux/modules/session'
+  logoutSuccess,
+} from '../redux/modules/session/session'
 
 export const login = (email, password) => {
   return (dispatch) => {
     dispatch(loginRequest())
 
+    let token
+    let user
     tsc.login(email, password)
-      .then(
-        ({ key, user }) => dispatch(loginSuccess(key, user)),
-        (error) => dispatch(loginFailure(error)))
+      .then(res => {
+        token = res.data.key
+        return tsc.getCurrentUser()
+      })
+      .then(res => {
+        user = res.data
+        dispatch(loginSuccess(token, user))
+      }, error => dispatch(loginFailure(error)))
+  }
+}
+
+export const logout = () => {
+  return (dispatch) => {
+    tsc.logout()
+      .then(res => dispatch(logoutSuccess()))
   }
 }
