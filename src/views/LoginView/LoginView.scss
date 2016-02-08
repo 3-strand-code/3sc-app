@@ -3,8 +3,11 @@ body {
   background: lightgray;
 }
 
-.HomeView {
+.LoginView {
   &__grid {
     height: 80vh;
+  }
+  &__formColumn {
+    max-width: 30em;
   }
 }

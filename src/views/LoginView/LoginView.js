@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import * as SD from 'stardust'
+import {
+  Grid,
+  Header,
+  Image,
+  Column,
+} from 'stardust'
 
-import './HomeView.scss'
+import './LoginView.scss'
 import LoginForm from 'components/LoginForm/LoginForm'
+import logoUrl from 'assets/images/android-icon-192x192.png'
 
-class HomeView extends Component {
+class LoginView extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
     session: PropTypes.object.isRequired,
@@ -21,14 +27,16 @@ class HomeView extends Component {
   }
 
   render() {
+    const logo = <Image src={logoUrl} className='mini' />
     return (
-      <SD.Container className='text'>
-        <SD.Grid className='middle aligned HomeView--full-height'>
-          <SD.Column>
-            <LoginForm />
-          </SD.Column>
-        </SD.Grid>
-      </SD.Container>
+      <Grid className='middle aligned center aligned very relaxed equal width LoginView__grid'>
+        <Column className='LoginView__formColumn'>
+          <Header.H1 className='blue center aligned' image={logo}>
+            3 Strand Code
+          </Header.H1>
+          <LoginForm />
+        </Column>
+      </Grid>
     )
   }
 }
@@ -37,4 +45,4 @@ const mapStateToProps = (state) => ({
   session: state.session,
 })
 
-export default connect(mapStateToProps)(HomeView)
+export default connect(mapStateToProps)(LoginView)
