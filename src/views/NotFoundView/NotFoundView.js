@@ -3,11 +3,11 @@ import React, { Component, PropTypes } from 'react'
 class NotFoundView extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
-  }
+  };
 
   onReturnToHomepage = () => {
     this.props.history.replaceState(null, '/')
-  }
+  };
 
   render() {
     return (

@@ -7,7 +7,7 @@ class Root extends Component {
     history: PropTypes.object.isRequired,
     routes: PropTypes.element.isRequired,
     store: PropTypes.object.isRequired,
-  }
+  };
 
   render() {
     let devTools
