@@ -5,7 +5,7 @@ import sendToProtectedRoute from './hooks/sendToProtectedRoute'
 
 import AppLayout from 'layouts/AppLayout/AppLayout'
 import Dashboard from 'views/Dashboard/Dashboard'
-import LoginView from '../views/LoginView/LoginView'
+import LoginView from 'views/LoginView/LoginView'
 import NotFoundView from 'views/NotFoundView/NotFoundView'
 
 export default (
