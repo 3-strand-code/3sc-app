@@ -1,0 +1,10 @@
+html,
+body {
+  background: lightgray;
+}
+
+.HomeView {
+  &__grid {
+    height: 80vh;
+  }
+}

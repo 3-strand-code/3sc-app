@@ -50,7 +50,8 @@ const webpackConfig = {
       exclude: /node_modules/,
     }] : [],
     loaders: [
-      { test: /\.json/, loader: 'json' },
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.(png|jpg)$/, loader: 'file' },
       {
         test: /\.js$/,
         exclude: /node_modules\/(?!(stardust))/,
@@ -69,14 +70,9 @@ const webpackConfig = {
         test: /\.scss$/,
         loaders: [
           'style',
-          [
-            'css?sourceMap',
-            'modules',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ].join('&'),
+          'css?sourceMap',
           'postcss',
-          'sass',
+          'sass?sourceMap',
         ],
       },
     ],

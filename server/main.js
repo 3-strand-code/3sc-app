@@ -16,11 +16,6 @@ import webpackConfig from '../build/webpack.config'
 const paths = config.utils_paths
 const app = express()
 
-// TODO: remove this once once static assets are integrated
-// into webpack build system
-app.use(express.static(paths.src('assets')))
-// ------------------------------------
-
 app.use(historyApiFallback({
   verbose: false,
 }))
