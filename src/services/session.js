@@ -21,7 +21,10 @@ export const login = (email, password) => {
       .then(res => {
         user = res.data
         dispatch(loginSuccess(token, user))
-      }, error => dispatch(loginFailure(error)))
+      })
+      .catch(err => {
+        dispatch(loginFailure(err.data))
+      })
   }
 }
 

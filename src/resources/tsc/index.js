@@ -71,20 +71,20 @@ tsc.getCurrentUser = () => {
       return res
     }, err => {
       debug('get current user error')
-      return err
+      return Promise.reject(err)
     })
 }
 
-tsc.login = (username, password) => {
+tsc.login = (email, password) => {
   debug('login request')
-  return ajax.post(ENDPOINTS.login, { username, password })
+  return ajax.post(ENDPOINTS.login, { email, password })
     .then(res => {
       debug('login success')
       tsc.authToken = res.data.key
       return res
     }, err => {
       debug('login error')
-      return err
+      return Promise.reject(err)
     })
 }
 
