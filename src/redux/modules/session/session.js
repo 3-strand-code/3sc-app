@@ -43,14 +43,12 @@ export default function sessionReducer(state = initialState, action = {}) {
 
   switch (type) {
     case SESSION_LOGIN_REQUEST:
-      console.log('SESSION_LOGIN_REQUEST')
       return {
         ...state,
         hasPendingLogin: true,
         error: null,
       }
     case SESSION_LOGIN_SUCCESS:
-      console.log('SESSION_LOGIN_SUCCESS')
       return {
         ...state,
         hasPendingLogin: false,
