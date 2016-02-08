@@ -8,7 +8,7 @@ const requireAuth = (location, replaceWith) => {
     debug('user is authenticated')
   } else {
     debug('user is not authenticated, redirect')
-    replaceWith(null, '/login')
+    replaceWith(null, '/')
   }
 }
 

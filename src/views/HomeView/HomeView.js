@@ -1,4 +1,4 @@
-import styles from './LoginView.scss'
+import styles from './HomeView.scss'
 import autobind from 'autobind-decorator'
 import cx from 'classnames'
 import React, { Component, PropTypes } from 'react'
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
   }, dispatch),
 })
 
-class LoginView extends Component {
+class HomeView extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
@@ -79,4 +79,4 @@ class LoginView extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView)

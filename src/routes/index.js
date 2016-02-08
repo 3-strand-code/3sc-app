@@ -5,13 +5,12 @@ import sendToProtectedRoute from './hooks/sendToProtectedRoute'
 
 import AppLayout from 'layouts/AppLayout/AppLayout'
 import Dashboard from 'views/Dashboard/Dashboard'
-import LoginView from 'views/LoginView/LoginView'
+import HomeView from '../views/HomeView/HomeView'
 import NotFoundView from 'views/NotFoundView/NotFoundView'
 
 export default (
   <Route path='/'>
-    <IndexRoute component={LoginView} />
-    <Route path='/login' component={LoginView} onEnter={sendToProtectedRoute} />
+    <IndexRoute component={HomeView} onEnter={sendToProtectedRoute} />
     <Route path='/404' component={NotFoundView} />
     <Route onEnter={requireAuth} component={AppLayout}>
       <Route path='/dashboard' component={Dashboard} />
