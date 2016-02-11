@@ -2,7 +2,7 @@ import autobind from 'autobind-decorator'
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Button } from 'stardust'
+import { Button, Header } from 'stardust'
 
 import * as sessionService from 'services/session'
 
@@ -23,6 +23,7 @@ class Dashboard extends Component {
     const { currentUser } = this.props
     return (
       <div>
+        <Header.H1>Dashboard</Header.H1>
         <pre>{JSON.stringify(currentUser, null, 2)}</pre>
         <Button onClick={this.handleLogout}>Logout</Button>
       </div>

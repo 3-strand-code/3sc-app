@@ -10,9 +10,7 @@ class ProfileView extends Component {
     return (
       <Grid className='equal width'>
         <Column>
-          <Header.H1 className='blue center aligned'>
-            Profile
-          </Header.H1>
+          <Header.H1>Profile</Header.H1>
         </Column>
       </Grid>
     )
