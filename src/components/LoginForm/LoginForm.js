@@ -55,7 +55,7 @@ export default class LoginForm extends Component {
       return (
         <div>
           <b>{key}</b>
-          {_.map(val, msg => <div className=''>{msg}</div>)}
+          {_.map(val, msg => <div>{msg}</div>)}
         </div>
       )
     })
