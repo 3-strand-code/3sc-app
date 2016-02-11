@@ -1,8 +1,13 @@
-.loginColumn {
-  position: absolute;
-  top: 20%;
-  right: 0;
-  left: 0;
-  max-width: 340px;
-  margin: auto;
+html,
+body {
+  background: lightgray;
+}
+
+.LoginView {
+  &__grid {
+    height: 80vh;
+  }
+  &__formColumn {
+    max-width: 30em;
+  }
 }

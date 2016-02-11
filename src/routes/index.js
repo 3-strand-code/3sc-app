@@ -11,8 +11,8 @@ import NotFoundView from 'views/NotFoundView/NotFoundView'
 export default (
   <Route path='/'>
     <IndexRoute component={LoginView} />
-    <Route path='/login' component={LoginView} onEnter={sendToProtectedRoute} />
     <Route path='/404' component={NotFoundView} />
+    <Route path='/login' component={LoginView} onEnter={sendToProtectedRoute} />
     <Route onEnter={requireAuth} component={AppLayout}>
       <Route path='/dashboard' component={Dashboard} />
     </Route>
