@@ -8,7 +8,7 @@ import {
 class ProfileView extends Component {
   render() {
     return (
-      <Grid className='middle aligned center aligned very relaxed equal width ProfileView__grid'>
+      <Grid className='equal width'>
         <Column>
           <Header.H1 className='blue center aligned'>
             Profile
