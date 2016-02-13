@@ -7,6 +7,7 @@ import AppLayout from 'layouts/AppLayout/AppLayout'
 import Dashboard from 'views/Dashboard/Dashboard'
 import LoginView from 'views/LoginView/LoginView'
 import NotFoundView from 'views/NotFoundView/NotFoundView'
+import ProfileView from 'views/ProfileView/ProfileView'
 
 export default (
   <Route path='/'>
@@ -15,6 +16,7 @@ export default (
     <Route path='/login' component={LoginView} onEnter={sendToProtectedRoute} />
     <Route onEnter={requireAuth} component={AppLayout}>
       <Route path='/dashboard' component={Dashboard} />
+      <Route path='/profile' component={ProfileView} />
     </Route>
     <Redirect from='*' to='/404' />
   </Route>
