@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Menu, MenuItem } from 'stardust'
+import { Menu } from 'stardust'
 import { Link } from 'react-router'
+
 export default class Header extends Component {
   render() {
     return (
       <Menu>
         <Link to='/profile'>
-          <MenuItem>Profile</MenuItem>
+          <Menu.Item>Profile</Menu.Item>
         </Link>
         <Link to='/dashboard'>
-          <MenuItem>Dashboard</MenuItem>
+          <Menu.Item>Dashboard</Menu.Item>
         </Link>
       </Menu>
     )

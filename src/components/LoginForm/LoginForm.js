@@ -15,11 +15,6 @@ import {
 
 import { login } from 'services/session'
 
-const FORM_SETTINGS = {
-  // stop Semantic UI from submitting form
-  onSuccess: () => false,
-}
-
 export default class LoginForm extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -75,7 +70,7 @@ export default class LoginForm extends Component {
 
     return (
       <Segment className='stacked'>
-        <Form settings={FORM_SETTINGS} onSubmit={this.handleSubmit} className={formClasses} ref='form'>
+        <Form onSubmit={this.handleSubmit} className={formClasses} ref='form'>
           {this.renderErrorMessage()}
           <Field>
             <Input

@@ -4,7 +4,6 @@ import {
   Grid,
   Header,
   Image,
-  Column,
 } from 'stardust'
 
 import './LoginView.scss'
@@ -30,12 +29,12 @@ class LoginView extends Component {
     const logo = <Image src={logoUrl} className='mini' />
     return (
       <Grid className='middle aligned center aligned very relaxed equal width LoginView__grid'>
-        <Column className='LoginView__formColumn'>
+        <Grid.Column className='LoginView__formColumn'>
           <Header.H1 className='blue center aligned' image={logo}>
             3 Strand Code
           </Header.H1>
           <LoginForm />
-        </Column>
+        </Grid.Column>
       </Grid>
     )
   }

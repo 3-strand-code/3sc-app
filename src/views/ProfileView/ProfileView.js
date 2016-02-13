@@ -1,17 +1,20 @@
-import React, { Component, PropTypes } from 'react'
-import {
-  Grid,
-  Header,
-  Column,
-} from 'stardust'
+import React, { Component } from 'react'
+import { Grid, Header, Button } from 'stardust'
 
 class ProfileView extends Component {
   render() {
     return (
       <Grid className='equal width'>
-        <Column>
+        <Grid.Column>
           <Header.H1>Profile</Header.H1>
-        </Column>
+        </Grid.Column>
+
+        <Grid.Column>
+          <Button className='icon'>
+            <i className='github icon' />
+            GitHub
+          </Button>
+        </Grid.Column>
       </Grid>
     )
   }
