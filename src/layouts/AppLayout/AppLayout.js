@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from 'components/Header/Header'
-import classes from './AppLayout.scss'
+import './AppLayout.scss'
+import { Grid } from 'stardust'
 
 class AppLayout extends React.Component {
   static propTypes = {
@@ -9,12 +10,18 @@ class AppLayout extends React.Component {
 
   render() {
     return (
-      <div className='layout-container'>
-        <Header />
-        <div className={`layout-main ${classes.mainLayout}`}>
-          {this.props.children}
-        </div>
-      </div>
+      <Grid className='one column'>
+        <Grid.Column>
+          <Header />
+        </Grid.Column>
+        <Grid.Column>
+          <Grid className='one column padded'>
+            <Grid.Column>
+              {this.props.children}
+            </Grid.Column>
+          </Grid>
+        </Grid.Column>
+      </Grid>
     )
   }
 }

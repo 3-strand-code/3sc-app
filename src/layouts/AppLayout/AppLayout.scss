@@ -1,10 +1,3 @@
 :global {
   @import 'core';
 }
-
-.mainLayout {
-  display: flex;
-  flex: 1 0 0;
-  flex-flow: column wrap;
-  padding-top: 3.75em;
-}
