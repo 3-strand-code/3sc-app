@@ -22,16 +22,19 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
 }
 
+const API_URL = 'https://threesc-api.herokuapp.com/'
+
 const ENDPOINTS = {
   applicants: 'api/applicants/',
   assignments: 'api/assignments/',
+  connectGithub: 'login/github/',
   recipes: 'api/recipes/',
-  passwordReset: '/rest-auth/password/reset/',
-  passwordConfirm: '/rest-auth/password/reset/confirm/',
-  passwordChange: '/rest-auth/password/change/',
-  login: '/rest-auth/login/',
-  logout: '/rest-auth/logout/',
-  user: '/rest-auth/user/',
+  passwordReset: 'rest-auth/password/reset/',
+  passwordConfirm: 'rest-auth/password/reset/confirm/',
+  passwordChange: 'rest-auth/password/change/',
+  login: 'rest-auth/login/',
+  logout: 'rest-auth/logout/',
+  user: 'rest-auth/user/',
 }
 
 // ----------------------------------------------------
@@ -39,7 +42,7 @@ const ENDPOINTS = {
 // ----------------------------------------------------
 
 const ajax = axios.create({
-  baseURL: 'https://threesc-api.herokuapp.com',
+  baseURL: API_URL,
 })
 
 ajax.interceptors.request.use(config => {
@@ -93,6 +96,8 @@ tsc.logout = () => {
   tsc.authToken = null
   return Promise.resolve()
 }
+
+tsc.connectGithub = () => window.location = API_URL + ENDPOINTS.connectGithub
 
 // ----------------------------------------------------
 // Namespaces (resources/models)

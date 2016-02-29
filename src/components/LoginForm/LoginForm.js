@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
   Button,
-  Field,
   Form,
   Input,
   Message,
@@ -72,7 +71,7 @@ export default class LoginForm extends Component {
       <Segment className='stacked'>
         <Form onSubmit={this.handleSubmit} className={formClasses} ref='form'>
           {this.renderErrorMessage()}
-          <Field>
+          <Form.Field>
             <Input
               className='left icon'
               name='email'
@@ -80,8 +79,8 @@ export default class LoginForm extends Component {
               placeholder='Email'
               icon='envelope'
             />
-          </Field>
-          <Field>
+          </Form.Field>
+          <Form.Field>
             <Input
               className='left icon'
               name='password'
@@ -89,7 +88,7 @@ export default class LoginForm extends Component {
               placeholder='Password'
               icon='lock'
             />
-          </Field>
+          </Form.Field>
           <Button type='submit' className='fluid blue'>
             Login
           </Button>
